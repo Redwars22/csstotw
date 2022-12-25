@@ -1,0 +1,1 @@
+tsc csstotw.ts && node csstotw.js
