@@ -39,6 +39,29 @@ function parseTokens(tokens: string[]): string {
 while(true){
     const command = reader("CSStoTW: ");
 
+    if(command.includes(';')){
+        const statements: string[] = command.split(';');
+        let parsedTW : string;
+
+        parsedTW = "\"";
+
+        for(let statement = 0; statement < statements.length; statement++){
+            if(statements[statement].match(/margin-top: .*/)){        
+                parsedTW += parseTokens(statements[statement].split(":"));
+                continue;
+            }
+
+            for(const CSSRule in CSSTOTailwindMap)
+                if(statements[statement].trim() == CSSRule)
+                    parsedTW += CSSTOTailwindMap[CSSRule] + " ";
+        }  
+
+        parsedTW += "\"";
+
+        console.log(parsedTW);
+        continue;
+    }
+
     if(command?.trim().match(/margin-top: .*/)){
         const statement = command.split(':');
 
