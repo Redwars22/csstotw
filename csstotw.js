@@ -1,4 +1,5 @@
 var reader = require('prompt-sync')();
+var term = require('terminal-kit').terminal;
 var Tools = /** @class */ (function () {
     function Tools() {
     }
@@ -63,6 +64,15 @@ function parseTokens(tokens) {
     }
     return tokensArr.join("").replace(' ', '');
 }
+function init() {
+    console.clear();
+    term.windowTitle("CSSToTW - criado por @AndrewNation");
+    term.bold.red('🦸️ 🤝️ 🍃️ CSSToTW - Conversor de declarações CSS para classes Tailwind 🌬️ 🛠️ ⚙️\n\n');
+    term.bold.red("📚️ COMO USAR?\n");
+    term.blue("Insira uma declaração CSS (por exemplo: 'margin-top: 16px;') para obter seu equivalente em classes Tailwind. ");
+    term.blue("Por favor reportar bugs abrindo um issue no repositório do projeto.\n\n");
+}
+init();
 while (true) {
     var command = reader("CSStoTW: ");
     if (command.includes(';')) {
@@ -78,17 +88,17 @@ while (true) {
                 if (statements[statement].trim() == CSSRule_1)
                     parsedTW += CSSTOTailwindMap[CSSRule_1] + (statement < statements.length - 1 ? " " : "");
         }
-        parsedTW += "\"";
-        console.log("class=" + parsedTW);
-        console.log("className=" + parsedTW);
+        parsedTW = parsedTW.trim() + "\"";
+        term.yellow("\n\n(CSS): class=" + parsedTW);
+        term.blue("\n\n(ReactJS): className=" + parsedTW + "\n\n");
         continue;
     }
     // if(command?.trim().match(/margin-top: .*/)){
     //     const statement = command.split(':');
     //     console.log(parseTokens(statement));
     // }
-    // if(command.trim() == "exit")
-    //     break;
+    if (command.trim() == "exit")
+        break;
     // for(const CSSRule in CSSTOTailwindMap)
     //     if(command?.trim() == CSSRule)
     //         console.log(CSSTOTailwindMap[CSSRule])
