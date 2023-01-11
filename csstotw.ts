@@ -41,10 +41,21 @@ const CSSTOTailwindMap = {
   "width": "w-",
 };
 
+const flexbox = {
+  "column": "flex-col",
+  "row": "flex-row"
+}
+
 function parseTokens(tokens: string[]): string {
   let tokensArr: string[] = tokens;
 
   for (let token = 0; token < tokensArr.length; token++) {
+    if(tokensArr[token] == "flex-direction"){
+      tokensArr[token] = "";
+      tokensArr[token + 1] = flexbox[tokensArr[token + 1].trim()]
+      continue;
+    }
+
     if (CSSTOTailwindMap[tokensArr[token].trim()]) {
       tokensArr[token] = CSSTOTailwindMap[tokensArr[token].trim()];
       continue;
