@@ -99,7 +99,7 @@ function init() {
     "Insira uma declaração CSS (por exemplo: 'margin-top: 16px;') para obter seu equivalente em classes Tailwind. "
   );
   term.blue(
-    "Por favor reportar bugs abrindo um issue no repositório do projeto.\n\n"
+    "Por favor reportar bugs abrindo um issue no repositório do projeto.\n"
   );
 }
 

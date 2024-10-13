@@ -1,14 +1,14 @@
 {
   "name": "csstotw",
   "version": "1.0.0",
-  "description": "",
+  "description": "CSS to Tailwind class converter CLI tool",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": ["tool", "converter", "transpiller", "transpiler", "css", "tailwind"],
+  "author": "andrewnation",
+  "license": "MIT",
   "dependencies": {
     "prompt-sync": "^4.2.0",
     "terminal-kit": "^3.0.0"
